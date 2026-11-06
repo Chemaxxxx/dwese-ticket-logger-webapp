@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head (#{msg.estanteria.list.title})"></head>
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+<main class = "container mt-5">
+
+    <h1 th:text="#{msg.estanteria.list.heading}">Estanterias</h1>
+
+    <div th:if="${errorMessage}" class = "alert alert-danger">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <table class = " table table-bordered mt-3">
+
+        <thead>
+        <tr>
+            <th th:text="#{msg.estanteria.table.id}">ID</th>
+            <th th:text="#{msg.estanteria.table.codigo}">Codigo</th>
+            <th th:text="#{msg.estanteria.table.ubicacion}">Ubicación</th>
+            <th th:text="#{msg.estanteria.table.material}">Material</th>
+            <th th:text="#{msg.estanteria.table.estado}">Estado</th>
+            <th th:text="#{msg.estanteria.table.acciones}">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="estanteria : ${estanteriaList}">
+            <td th:text="${estanteria.id}"></td>
+            <td th:text="${estanteria.codigo}"></td>
+            <td th:text="${estanteria.ubicacion}"></td>
+            <td th:text="${estanteria.material}"></td>
+            <td th:text="${estanteria.estado}"></td>
+            <td>
+                <a th:href="@{regions/edit(id=${estanteria.id})}"
+                   class="btn btn-primary btn-sm"
+                   th:text="#{msg.estanteria.button.edit}">
+                   Editar
+                </a>
+
+                <form th:action="@{estanterias/delete}" method="post" class = "d-inline">
+                    <input type = "hidden" name = "id" th:value="${estanteria.id}" />
+                    <button type = "submit"
+                            class="btn btn-danger btn-sm"
+                            th:onclick="|return confirm('#{msg.estanteria.delete.confirm}');|"
+                            th:text="#{msg.region.button.delete}">
+                        Borrar
+
+                    </button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>
+
