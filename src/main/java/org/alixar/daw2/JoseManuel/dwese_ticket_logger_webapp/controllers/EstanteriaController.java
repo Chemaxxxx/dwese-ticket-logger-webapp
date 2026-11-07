@@ -63,7 +63,7 @@ public class EstanteriaController {
     }
 
     @PostMapping("/insert")
-    public String insertRegion(@Valid @ModelAttribute("estanteria") Estanteria estanteria,
+    public String insertEstanteria(@Valid @ModelAttribute("estanteria") Estanteria estanteria,
                                BindingResult result, RedirectAttributes redirectAttributes, Locale locale){
 
         try{
