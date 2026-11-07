@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head (#{msg.estanteria.form.title})"></head>
+<body>
+
+<!-- Incluir el fragmento del header -->
+<header th:replace="fragments/header :: header"></header>
+
+<main class="container mt-5">
+
+    <h1 th:text="${estanteria.id == null} ? #{msg.estanteria.form.add} : #{msg.estanteria.form.edit}"></h1>
+
+    <!-- Muestra un mensaje de error si hay algún problema -->
+    <div th:if="${errorMessage}" class="alert alert-danger">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <form th:action="${estanteria.id == null} ? @{/estanterias/insert} : @{/estanterias/update}"
+          th:object="${estanteria}" method="post" class="mt-4">
+
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="mb-3">
+            <label for="codigo" class="form-label" th:text="#{msg.estanteria.form.codigo}">Codigo:</label>
+            <input type="text" th:field="*{codigo}" id="codigo" class="form-control" />
+
+            <div th:if="${#fields.hasErrors('codigo')}"
+                 class="text-danger"
+                 th:errors="*{codigo}">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="ubicacion" class="form-label" th:text="#{msg.estanteria.form.ubicacion}">Ubicacion:</label>
+            <input type="text" th:field="*{ubicacion}" id="ubicacion" class="form-control" />
+
+            <div th:if="${#fields.hasErrors('ubicacion')}"
+                 class="text-danger"
+                 th:errors="*{ubicacion}">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="material" class="form-label" th:text="#{msg.estanteria.form.material}">Material:</label>
+            <input type="text" th:field="*{material}" id="material" class="form-control" />
+
+            <div th:if="${#fields.hasErrors('material')}"
+                 class="text-danger"
+                 th:errors="*{material}">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="estado" class="form-label" th:text="#{msg.estanteria.form.estado}">Estado:</label>
+            <input type="text" th:field="*{estado}" id="estado" class="form-control" />
+
+            <div th:if="${#fields.hasErrors('estado')}"
+                 class="text-danger"
+                 th:errors="*{estado}">
+            </div>
+        </div>
+
+        <button type="submit"
+                class="btn btn-primary"
+                th:text="${estanteria.id == null} ? #{msg.estanteria.form.create} : #{msg.estanteria.form.update}">
+        </button>
+
+    </form>
+
+    <!-- Volver a la lista de regiones -->
+    <a th:href="@{/estanterias}"
+       class="btn btn-secondary mt-3"
+       th:text="#{msg.estanteria.form.back}">
+      Volver
+    </a>
+
+</main>
+
+<!-- Incluir el fragmento del footer -->
+<footer th:replace="fragments/footer :: footer"></footer>
+
+</body>
+</html>

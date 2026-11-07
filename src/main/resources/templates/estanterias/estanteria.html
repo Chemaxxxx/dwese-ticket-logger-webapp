@@ -5,15 +5,15 @@
 <body>
 
 <header th:replace="fragments/header :: header"></header>
-<main class = "container mt-5">
+<main class="container mt-5">
 
     <h1 th:text="#{msg.estanteria.list.heading}">Estanterias</h1>
 
-    <div th:if="${errorMessage}" class = "alert alert-danger">
+    <div th:if="${errorMessage}" class="alert alert-danger">
         <p th:text="${errorMessage}"></p>
     </div>
 
-    <table class = " table table-bordered mt-3">
+    <table class="table table-bordered mt-3">
 
         <thead>
         <tr>
@@ -33,20 +33,19 @@
             <td th:text="${estanteria.material}"></td>
             <td th:text="${estanteria.estado}"></td>
             <td>
-                <a th:href="@{estanterias/edit(id=${estanteria.id})}"
+                <a th:href="@{/estanterias/edit(id=${estanteria.id})}"
                    class="btn btn-primary btn-sm"
                    th:text="#{msg.estanteria.button.edit}">
-                   Editar
+                    Editar
                 </a>
 
-                <form th:action="@{estanterias/delete}" method="post" class = "d-inline">
-                    <input type = "hidden" name = "id" th:value="${estanteria.id}" />
-                    <button type = "submit"
+                <form th:action="@{/estanterias/delete}" method="post" class="d-inline">
+                    <input type="hidden" name="id" th:value="${estanteria.id}" />
+                    <button type="submit"
                             class="btn btn-danger btn-sm"
                             th:onclick="|return confirm('#{msg.estanteria.delete.confirm}');|"
-                            th:text="#{msg.region.button.delete}">
+                            th:text="#{msg.estanteria.button.delete}">
                         Borrar
-
                     </button>
                 </form>
             </td>
@@ -54,12 +53,11 @@
         </tbody>
     </table>
 
-    <a th:ref="@{estanterias/new}"
+    <a th:href="@{/estanterias/new}"
        class="btn btn-success mt-3"
        th:text="#{msg.estanteria.button.add}">
-       Añadir nueva estanteria
+        Añadir nueva estanteria
     </a>
 </main>
 </body>
 </html>
-

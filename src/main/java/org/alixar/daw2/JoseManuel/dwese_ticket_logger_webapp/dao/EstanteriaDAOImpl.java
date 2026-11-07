@@ -81,7 +81,7 @@ public class EstanteriaDAOImpl implements EstanteriaDAO {
 
         String consulta = "SELECT COUNT(*) FROM estanteria WHERE UPPER(codigo) = ? AND id != ?";
 
-        Integer count= jdbcTemplate.queryForObject(consulta, Integer.class, codigo, id);
+        Integer count= jdbcTemplate.queryForObject(consulta, Integer.class, codigo.toUpperCase(), id);
         return count != null && count > 0;
     }
 }

@@ -1,3 +1,4 @@
+
 package org.alixar.daw2.JoseManuel.dwese_ticket_logger_webapp.controllers;
 
 import jakarta.validation.Valid;
@@ -33,7 +34,7 @@ public class EstanteriaController {
             estanteriaList = estanteriaDAO.listEstanterias();
         }catch (DataAccessException e){
             model.addAttribute("errorMessage",
-                    messageSource.getMessage("msg.region.list.error", null, locale));
+                    messageSource.getMessage("msg.estanteria.list.error", null, locale));
         }
 
         model.addAttribute("estanteriaList", estanteriaList);
@@ -47,7 +48,7 @@ public class EstanteriaController {
         return "estanterias/estanteria-form";
     }
 
-    @RequestMapping("/edit")
+    @GetMapping("/edit")
     public String showEditForm(@RequestParam("id") Long id, Model model, Locale locale){
         Estanteria estanteria = null;
         try{
@@ -58,7 +59,7 @@ public class EstanteriaController {
         }
 
         model.addAttribute("estanteria", estanteria);
-        return "estanterias/estanteria";
+        return "estanterias/estanteria-form";
     }
 
     @PostMapping("/insert")
@@ -70,9 +71,9 @@ public class EstanteriaController {
                 return "estanterias/estanteria-form";
 
             if(estanteriaDAO.existsByCode(estanteria.getCodigo())){
-                String errorMenssage = messageSource.getMessage("msg.estanteria-controller.insert.codigoExists",
+                String errorMessage = messageSource.getMessage("msg.estanteria-controller.insert.codigoExists",
                         null, locale);
-                redirectAttributes.addFlashAttribute("errorMessage", errorMenssage);
+                redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
 
                 return "redirect:/estanterias/new";
             }
@@ -82,7 +83,8 @@ public class EstanteriaController {
             String errorMessage = messageSource.getMessage("msg.estanteria-controller.insert.error",
                     null, locale);
 
-
+            redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
+            return "redirect:/estanterias/new";
         }
 
         return "redirect:/estanterias";
@@ -90,7 +92,7 @@ public class EstanteriaController {
 
     @PostMapping("/update")
     public String updateEstanteria(@Valid @ModelAttribute("estanteria") Estanteria estanteria,
-                                   RedirectAttributes redirectAttributes, BindingResult result, Locale locale){
+                                   BindingResult result, RedirectAttributes redirectAttributes, Locale locale){
 
         try{
             if(result.hasErrors())
@@ -101,7 +103,7 @@ public class EstanteriaController {
                 String errorMessage = messageSource.getMessage("msg.estanteria-controller.update.codigoExists",
                         null, locale);
 
-                redirectAttributes.addFlashAttribute("erroMessage", errorMessage);
+                redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
                 return "redirect:/estanterias/edit?id=" + estanteria.getId();
 
             }
@@ -111,7 +113,8 @@ public class EstanteriaController {
             String errorMessage = messageSource.getMessage("msg.estanteria-controller.update.error",
                     null, locale);
 
-            redirectAttributes.addFlashAttribute("erroMessage", errorMessage);
+            redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
+            return "redirect:/estanterias/edit?id=" + estanteria.getId();
         }
 
         return "redirect:/estanterias";
@@ -123,7 +126,7 @@ public class EstanteriaController {
         try{
             estanteriaDAO.deleteEstanteria(id);
         }catch(DataAccessException e){
-            redirectAttributes.addFlashAttribute("errorMenssage",
+            redirectAttributes.addFlashAttribute("errorMessage",
                     messageSource.getMessage("msg.estanteria.delete.error", null, locale));
 
         }
