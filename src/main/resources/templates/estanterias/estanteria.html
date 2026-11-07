@@ -33,7 +33,7 @@
             <td th:text="${estanteria.material}"></td>
             <td th:text="${estanteria.estado}"></td>
             <td>
-                <a th:href="@{regions/edit(id=${estanteria.id})}"
+                <a th:href="@{estanterias/edit(id=${estanteria.id})}"
                    class="btn btn-primary btn-sm"
                    th:text="#{msg.estanteria.button.edit}">
                    Editar
@@ -54,11 +54,10 @@
         </tbody>
     </table>
 
-    <a th:ref="@{regions/new}"
+    <a th:ref="@{estanterias/new}"
        class="btn btn-success mt-3"
-       th:text = "{msg.estanteria.button.add}" >
-
-        Añadir nueva estanteria
+       th:text="#{msg.estanteria.button.add}">
+       Añadir nueva estanteria
     </a>
 </main>
 </body>

@@ -102,7 +102,7 @@ public class EstanteriaController {
                         null, locale);
 
                 redirectAttributes.addFlashAttribute("erroMessage", errorMessage);
-                return "redirect:/estanterias/edit/id=" + estanteria.getId();
+                return "redirect:/estanterias/edit?id=" + estanteria.getId();
 
             }
 
