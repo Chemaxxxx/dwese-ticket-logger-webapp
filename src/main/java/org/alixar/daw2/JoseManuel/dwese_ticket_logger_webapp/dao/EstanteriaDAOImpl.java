@@ -41,8 +41,8 @@ public class EstanteriaDAOImpl implements EstanteriaDAO {
 
         String consulta = "UPDATE estanteria SET codigo = ?, ubicacion = ?, material = ?, estado = ? WHERE id = ?";
 
-         jdbcTemplate.update(consulta, estanteria.getCodigo(),
-                 estanteria.getUbicacion(), estanteria.getMaterial(), estanteria.getEstado(), estanteria.getId());
+        jdbcTemplate.update(consulta, estanteria.getCodigo(),
+                estanteria.getUbicacion(), estanteria.getMaterial(), estanteria.getEstado(), estanteria.getId());
     }
 
     @Override
