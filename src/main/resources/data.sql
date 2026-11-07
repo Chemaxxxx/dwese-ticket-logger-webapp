@@ -31,10 +31,10 @@ INSERT IGNORE INTO estanteria (id, codigo, ubicacion, material, estado) VALUES
 
 
 
--- INSERT IGNORE INTO caja (id, codigo, fecha_empaque, es_fragil, peso_kg, contenido, id_estanteria) VALUES
--- (1, 'CAJ-001', '2026-10-01', TRUE, 5.50, 'Libros', 1),
--- (2, 'CAJ-002', '2026-10-02', FALSE, 12.00, 'Herramientas', 1),
--- (3, 'CAJ-003', '2026-10-03', TRUE, 2.30, 'Vajilla', 2),
--- (4, 'CAJ-004', '2026-10-04', FALSE, 8.70, 'Ropa', 3),
--- (5, 'CAJ-005', '2026-10-05', TRUE, 1.20, 'Cristaleria', 3),
--- (6, 'CAJ-006', '2026-10-06', FALSE, 15.00, 'Juguetes', 5);
+INSERT IGNORE INTO caja (id, codigo, fecha_empaque, es_fragil, peso_kg, contenido, id_estanteria) VALUES
+(1, 'CAJ-001', '2026-10-01', TRUE, 5.50, 'Libros', 1),
+(2, 'CAJ-002', '2026-10-02', FALSE, 12.00, 'Herramientas', 1),
+(3, 'CAJ-003', '2026-10-03', TRUE, 2.30, 'Vajilla', 2),
+(4, 'CAJ-004', '2026-10-04', FALSE, 8.70, 'Ropa', 3),
+(5, 'CAJ-005', '2026-10-05', TRUE, 1.20, 'Cristaleria', 3),
+(6, 'CAJ-006', '2026-10-06', FALSE, 15.00, 'Juguetes', 5);

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head (#{msg.caja.list.title})"></head>
+<body>
+
+<header th:replace="fragments/header-almacen :: header-almacen"></header>
+<main class="container mt-5">
+
+    <h1 th:text="#{msg.caja.list.heading}">Cajas</h1>
+
+    <div th:if="${errorMessage}" class="alert alert-danger">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <table class="table table-bordered mt-3">
+
+        <thead>
+        <tr>
+            <th th:text="#{msg.caja.table.id}">ID</th>
+            <th th:text="#{msg.caja.table.codigo}">Codigo</th>
+            <th th:text="#{msg.caja.table.fecha_empaque}">Fecha de Empaque</th>
+            <th th:text="#{msg.caja.table.es_fragil}">Fragil</th>
+            <th th:text="#{msg.caja.table.peso}">Peso</th>
+            <th th:text="#{msg.caja.table.contenido}">Contenido</th>
+            <th th:text="#{msg.caja.table.estanteria}">Estanteria</th>
+            <th th:text="#{msg.caja.table.acciones}">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="caja : ${cajaList}">
+            <td th:text="${caja.id}"></td>
+            <td th:text="${caja.codigo}"></td>
+            <td th:text="${caja.fecha_empaque}"></td>
+            <td th:text="${caja.es_fragil} ? 'Sí' : 'No'"></td>
+            <td th:text="${caja.peso_kg}"></td>
+            <td th:text="${caja.contenido}"></td>
+            <td th:each="estanteria : ${estanteriaList}"
+                th:if="${caja.id_estanteria == estanteria.id}"
+                th:text="${estanteria.ubicacion}">
+            </td>
+            <td>
+                <a th:href="@{/cajas/edit(id=${caja.id})}"
+                   class="btn btn-primary btn-sm"
+                   th:text="#{msg.caja.button.edit}">
+                    Editar
+                </a>
+
+                <form th:action="@{/cajas/delete}" method="post" class="d-inline">
+                    <input type="hidden" name="id" th:value="${caja.id}" />
+                    <button type="submit"
+                            class="btn btn-danger btn-sm"
+                            th:onclick="|return confirm('#{msg.caja.delete.confirm}');|"
+                            th:text="#{msg.caja.button.delete}">
+                        Borrar
+                    </button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/cajas/new}"
+       class="btn btn-success mt-3"
+       th:text="#{msg.caja.button.add}">
+        Añadir nueva caja
+    </a>
+
+    <!-- Volver al inicio -->
+    <a th:href="@{/}"
+       class="btn btn-secondary mt-3"
+       th:text="#{msg.caja.button.back}">
+        Back to Home
+    </a>
+</main>
+</body>
+</html>
