@@ -49,23 +49,34 @@ public class CajaController {
     }
 
     @GetMapping("/new")
-    public String showNewForm(Model model){
+    public String showNewForm(Model model, Locale locale){
+        List<Estanteria>estanteriaList = null;
 
+        try{
+            estanteriaList = estanteriaDAO.listEstanterias();
+        }catch(DataAccessException e){
+            model.addAttribute("errorMessage",
+                    messageSource.getMessage("msg.caja.get.error", null, locale));
+        }
         model.addAttribute("caja", new Caja());
+        model.addAttribute("estanteriaList",estanteriaList);
         return "cajas/caja-form";
     }
 
     @GetMapping("/edit")
     public String showEditForm(@RequestParam("id") Long id, Model model, Locale locale){
         Caja caja = null;
+        List<Estanteria>estanteriaList = null;
         try{
             caja = cajaDAO.getById(id);
+            estanteriaList = estanteriaDAO.listEstanterias();
         }catch(DataAccessException e){
             model.addAttribute("errorMessage",
                     messageSource.getMessage("msg.caja.get.error", null, locale));
         }
 
         model.addAttribute("caja", caja);
+        model.addAttribute("estanteriaList",estanteriaList);
         return "cajas/caja-form";
     }
 

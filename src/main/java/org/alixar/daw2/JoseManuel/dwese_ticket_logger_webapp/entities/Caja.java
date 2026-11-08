@@ -26,7 +26,7 @@ public class Caja {
     @NotNull(message = "{msg.caja.fechaEmpaque.notNull}")
     private LocalDate fecha_empaque;
 
-    // Indica si la caja es frágil.
+
     private boolean es_fragil;
 
 

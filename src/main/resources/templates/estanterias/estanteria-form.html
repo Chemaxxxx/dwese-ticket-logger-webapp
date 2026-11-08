@@ -9,7 +9,7 @@
 
 <main class="container mt-5">
 
-    <h1 th:text="${estanteria.id == null} ? #{msg.estanteria.form.add} : #{msg.estanteria.form.edit}"></h1>
+    <h1 th:text="${estanteria.id == null} ? #{msg.estanteria.form.add} : #{msg.estanteria.form.update}"></h1>
 
     <!-- Muestra un mensaje de error si hay algún problema -->
     <div th:if="${errorMessage}" class="alert alert-danger">
