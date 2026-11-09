@@ -1,45 +1,56 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Cabecera de la página con el título traducido -->
 <head th:replace="fragments/head :: head (#{msg.caja.form.title})"></head>
 <body>
 
-
+<!-- Barra de navegación del almacén -->
 <header th:replace="fragments/header-almacen :: header-almacen"></header>
 
+<!-- Contenido principal de la página -->
 <main class="container mt-5">
 
+    <!-- Muestra un título diferente dependiendo de si se crea o edita una caja -->
     <h1 th:text="${caja.id == null} ? #{msg.caja.form.add} : #{msg.caja.form.edit}"></h1>
 
+    <!-- Muestra un mensaje de error si existe -->
     <div th:if="${errorMessage}" class="alert alert-danger">
         <p th:text="${errorMessage}"></p>
     </div>
 
+    <!-- Formulario para crear o actualizar una caja -->
     <form th:action="${caja.id == null} ? @{/cajas/insert} : @{/cajas/update}"
           th:object="${caja}" method="post" class="mt-4">
 
+        <!-- Campo oculto que guarda el identificador de la caja -->
         <input type="hidden" th:field="*{id}" />
 
+        <!-- Campo para introducir el código de la caja -->
         <div class="mb-3">
             <label for="codigo" class="form-label" th:text="#{msg.caja.form.codigo}">Codigo:</label>
             <input type="text" th:field="*{codigo}" id="codigo" class="form-control" />
 
+            <!-- Muestra el error de validación del código si existe -->
             <div th:if="${#fields.hasErrors('codigo')}"
                  class="text-danger"
                  th:errors="*{codigo}">
             </div>
         </div>
 
+        <!-- Campo para introducir la fecha de empaquetado -->
         <div class="mb-3">
             <label for="fecha_empaque" class="form-label" th:text="#{msg.caja.form.fecha_empaque}">Fecha de Empaque:</label>
             <input type="text" th:field="*{fecha_empaque}" id="fecha_empaque" class="form-control" />
 
+            <!-- Muestra el error de validación de la fecha si existe -->
             <div th:if="${#fields.hasErrors('fecha_empaque')}"
                  class="text-danger"
                  th:errors="*{fecha_empaque}">
             </div>
         </div>
 
+        <!-- Selector para indicar si la caja contiene objetos frágiles -->
         <div class="mb-3">
             <label for="es_fragil" class="form-label" th:text="#{msg.caja.form.es_fragil}">Fragil:</label>
             <select th:field="*{es_fragil}" id="es_fragil" class="form-select">
@@ -47,49 +58,59 @@
                 <option value="false">No</option>
             </select>
 
+            <!-- Muestra el error de validación del campo si existe -->
             <div th:if="${#fields.hasErrors('es_fragil')}"
                  class="text-danger"
                  th:errors="*{es_fragil}">
             </div>
         </div>
 
+        <!-- Campo para introducir el peso de la caja en kilogramos -->
         <div class="mb-3">
             <label for="peso_kg" class="form-label" th:text="#{msg.caja.form.peso_kg}">Peso(kg):</label>
             <input type="text" th:field="*{peso_kg}" id="peso_kg" class="form-control" />
 
+            <!-- Muestra el error de validación del peso si existe -->
             <div th:if="${#fields.hasErrors('peso_kg')}"
                  class="text-danger"
                  th:errors="*{peso_kg}">
             </div>
         </div>
 
+        <!-- Campo para introducir una descripción del contenido de la caja -->
         <div class="mb-3">
             <label for="contenido" class="form-label" th:text="#{msg.caja.form.contenido}">Contenido</label>
             <input type="text" th:field="*{contenido}" id="contenido" class="form-control" />
 
+            <!-- Muestra el error de validación del contenido si existe -->
             <div th:if="${#fields.hasErrors('contenido')}"
                  class="text-danger"
                  th:errors="*{contenido}">
             </div>
         </div>
 
+        <!-- Selector para elegir la estantería a la que pertenece la caja -->
         <div class="mb-3">
             <label for="id_estanteria" class="form-label" th:text="#{msg.caja.form.estanteria}">Estanteria:</label>
 
             <select th:field="*{id_estanteria}" id="id_estanteria" class="form-select">
                 <option value="">Selecciona una estantería</option>
+
+                <!-- Recorre la lista de estanterías para mostrar sus opciones -->
                 <option th:each="estanteria : ${estanteriaList}"
                         th:value="${estanteria.id}"
                         th:text="${estanteria.ubicacion}">
                 </option>
             </select>
 
+            <!-- Muestra el error de validación de la estantería si existe -->
             <div th:if="${#fields.hasErrors('id_estanteria')}"
                  class="text-danger"
                  th:errors="*{id_estanteria}">
             </div>
         </div>
 
+        <!-- Botón para crear o actualizar la caja según corresponda -->
         <button type="submit"
                 class="btn btn-primary"
                 th:text="${caja.id == null} ? #{msg.caja.form.create} : #{msg.caja.form.update}">
@@ -97,7 +118,7 @@
 
     </form>
 
-
+    <!-- Enlace para volver al listado de cajas -->
     <a th:href="@{/cajas}"
        class="btn btn-secondary mt-3"
        th:text="#{msg.caja.form.back}">

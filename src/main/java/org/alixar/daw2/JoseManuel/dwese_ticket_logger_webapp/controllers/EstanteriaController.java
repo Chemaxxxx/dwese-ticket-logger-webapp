@@ -1,4 +1,3 @@
-
 package org.alixar.daw2.JoseManuel.dwese_ticket_logger_webapp.controllers;
 
 import jakarta.validation.Valid;
@@ -16,16 +15,29 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Controlador encargado de gestionar las operaciones relacionadas
+ * con las estanterías, como listar, insertar, actualizar y eliminar.
+ */
 @Controller
 @RequestMapping("/estanterias")
 public class EstanteriaController {
 
+    /** DAO utilizado para acceder a los datos de las estanterías. */
     @Autowired
     private EstanteriaDAO estanteriaDAO;
 
+    /** Objeto utilizado para obtener los mensajes según el idioma seleccionado. */
     @Autowired
     private MessageSource messageSource;
 
+    /**
+     * Muestra la lista de todas las estanterías.
+     *
+     * @param model objeto utilizado para enviar datos a la vista.
+     * @param locale idioma seleccionado para mostrar los mensajes.
+     * @return nombre de la vista que muestra la lista de estanterías.
+     */
     @GetMapping
     public String listEstanterias(Model model, Locale locale){
 
@@ -41,6 +53,12 @@ public class EstanteriaController {
         return "estanterias/estanteria";
     }
 
+    /**
+     * Muestra el formulario para registrar una nueva estantería.
+     *
+     * @param model objeto utilizado para enviar datos a la vista.
+     * @return nombre de la vista del formulario de estanterías.
+     */
     @GetMapping("/new")
     public String showNewForm(Model model){
 
@@ -48,6 +66,15 @@ public class EstanteriaController {
         return "estanterias/estanteria-form";
     }
 
+    /**
+     * Busca una estantería por su identificador y muestra sus datos
+     * en el formulario para poder modificarlos.
+     *
+     * @param id identificador de la estantería que se desea editar.
+     * @param model objeto utilizado para enviar datos a la vista.
+     * @param locale idioma seleccionado para mostrar los mensajes.
+     * @return nombre de la vista del formulario de estanterías.
+     */
     @GetMapping("/edit")
     public String showEditForm(@RequestParam("id") Long id, Model model, Locale locale){
         Estanteria estanteria = null;
@@ -62,9 +89,19 @@ public class EstanteriaController {
         return "estanterias/estanteria-form";
     }
 
+    /**
+     * Registra una nueva estantería después de comprobar que los datos
+     * son válidos y que su código no existe previamente.
+     *
+     * @param estanteria estantería que se desea insertar.
+     * @param result resultado de las validaciones del formulario.
+     * @param redirectAttributes objeto utilizado para enviar mensajes entre redirecciones.
+     * @param locale idioma seleccionado para mostrar los mensajes.
+     * @return redirección a la lista de estanterías o al formulario si ocurre algún error.
+     */
     @PostMapping("/insert")
     public String insertEstanteria(@Valid @ModelAttribute("estanteria") Estanteria estanteria,
-                               BindingResult result, RedirectAttributes redirectAttributes, Locale locale){
+                                   BindingResult result, RedirectAttributes redirectAttributes, Locale locale){
 
         try{
             if(result.hasErrors())
@@ -90,6 +127,16 @@ public class EstanteriaController {
         return "redirect:/estanterias";
     }
 
+    /**
+     * Actualiza los datos de una estantería después de comprobar que los datos
+     * son válidos y que su código no pertenece a otra estantería.
+     *
+     * @param estanteria estantería con los datos que se desean actualizar.
+     * @param result resultado de las validaciones del formulario.
+     * @param redirectAttributes objeto utilizado para enviar mensajes entre redirecciones.
+     * @param locale idioma seleccionado para mostrar los mensajes.
+     * @return redirección a la lista de estanterías o al formulario si ocurre algún error.
+     */
     @PostMapping("/update")
     public String updateEstanteria(@Valid @ModelAttribute("estanteria") Estanteria estanteria,
                                    BindingResult result, RedirectAttributes redirectAttributes, Locale locale){
@@ -120,6 +167,14 @@ public class EstanteriaController {
         return "redirect:/estanterias";
     }
 
+    /**
+     * Elimina una estantería de la base de datos mediante su identificador.
+     *
+     * @param id identificador de la estantería que se desea eliminar.
+     * @param redirectAttributes objeto utilizado para enviar mensajes entre redirecciones.
+     * @param locale idioma seleccionado para mostrar los mensajes.
+     * @return redirección a la lista de estanterías.
+     */
     @PostMapping("/delete")
     public String deleteEstanteria(@RequestParam("id") Long id, RedirectAttributes redirectAttributes, Locale locale){
 

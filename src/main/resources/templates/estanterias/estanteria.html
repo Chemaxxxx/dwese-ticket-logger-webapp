@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
+<!-- Cabecera de la página con el título internacionalizado. -->
 <head th:replace="fragments/head :: head (#{msg.estanteria.list.title})"></head>
 <body>
 
+<!-- Header de navegación de la aplicación. -->
 <header th:replace="fragments/header-almacen :: header-almacen"></header>
+
+<!-- Contenido principal de la página. -->
 <main class="container mt-5">
 
+    <!-- Título de la página de listado de estanterías. -->
     <h1 th:text="#{msg.estanteria.list.heading}">Estanterias</h1>
 
+    <!-- Muestra un mensaje de error si se ha producido algún problema. -->
     <div th:if="${errorMessage}" class="alert alert-danger">
         <p th:text="${errorMessage}"></p>
     </div>
 
+    <!-- Tabla que muestra los datos de las estanterías. -->
     <table class="table table-bordered mt-3">
 
+        <!-- Cabecera de la tabla con los nombres de las columnas. -->
         <thead>
         <tr>
             <th th:text="#{msg.estanteria.table.id}">ID</th>
@@ -25,6 +33,8 @@
             <th th:text="#{msg.estanteria.table.acciones}">Acciones</th>
         </tr>
         </thead>
+
+        <!-- Recorre la lista de estanterías y muestra sus datos. -->
         <tbody>
         <tr th:each="estanteria : ${estanteriaList}">
             <td th:text="${estanteria.id}"></td>
@@ -32,15 +42,24 @@
             <td th:text="${estanteria.ubicacion}"></td>
             <td th:text="${estanteria.material}"></td>
             <td th:text="${estanteria.estado}"></td>
+
+            <!-- Botones para editar o eliminar cada estantería. -->
             <td>
+
+                <!-- Enlace al formulario de edición de la estantería seleccionada. -->
                 <a th:href="@{/estanterias/edit(id=${estanteria.id})}"
                    class="btn btn-primary btn-sm"
                    th:text="#{msg.estanteria.button.edit}">
                     Editar
                 </a>
 
+                <!-- Formulario para eliminar la estantería seleccionada. -->
                 <form th:action="@{/estanterias/delete}" method="post" class="d-inline">
+
+                    <!-- Envía el identificador de la estantería que se desea eliminar. -->
                     <input type="hidden" name="id" th:value="${estanteria.id}" />
+
+                    <!-- Botón para confirmar y realizar la eliminación. -->
                     <button type="submit"
                             class="btn btn-danger btn-sm"
                             th:onclick="|return confirm('#{msg.estanteria.delete.confirm}');|"
@@ -53,13 +72,14 @@
         </tbody>
     </table>
 
+    <!-- Enlace al formulario para añadir una nueva estantería. -->
     <a th:href="@{/estanterias/new}"
        class="btn btn-success mt-3"
        th:text="#{msg.estanteria.button.add}">
         Añadir nueva estanteria
     </a>
 
-
+    <!-- Enlace para volver a la página principal del almacén. -->
     <a th:href="@{/almacen}"
        class="btn btn-secondary mt-3"
        th:text="#{msg.estanteria.button.back}">

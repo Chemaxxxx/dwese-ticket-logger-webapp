@@ -1,66 +1,80 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Cabecera de la página con el título internacionalizado. -->
 <head th:replace="fragments/head :: head (#{msg.estanteria.form.title})"></head>
 <body>
 
-<!-- Incluir el fragmento del header -->
+<!-- Header de navegación de la aplicación. -->
 <header th:replace="fragments/header-almacen :: header-almacen"></header>
 
+<!-- Contenido principal de la página. -->
 <main class="container mt-5">
 
+    <!-- Muestra el título correspondiente según se esté creando o actualizando una estantería. -->
     <h1 th:text="${estanteria.id == null} ? #{msg.estanteria.form.add} : #{msg.estanteria.form.update}"></h1>
 
-    <!-- Muestra un mensaje de error si hay algún problema -->
+    <!-- Muestra un mensaje de error si hay algún problema. -->
     <div th:if="${errorMessage}" class="alert alert-danger">
         <p th:text="${errorMessage}"></p>
     </div>
 
+    <!-- Formulario para insertar o actualizar una estantería. -->
     <form th:action="${estanteria.id == null} ? @{/estanterias/insert} : @{/estanterias/update}"
           th:object="${estanteria}" method="post" class="mt-4">
 
+        <!-- Campo oculto para conservar el identificador de la estantería. -->
         <input type="hidden" th:field="*{id}" />
 
+        <!-- Campo para introducir el código de la estantería. -->
         <div class="mb-3">
             <label for="codigo" class="form-label" th:text="#{msg.estanteria.form.codigo}">Codigo:</label>
             <input type="text" th:field="*{codigo}" id="codigo" class="form-control" />
 
+            <!-- Muestra los errores de validación del código. -->
             <div th:if="${#fields.hasErrors('codigo')}"
                  class="text-danger"
                  th:errors="*{codigo}">
             </div>
         </div>
 
+        <!-- Campo para introducir la ubicación de la estantería. -->
         <div class="mb-3">
             <label for="ubicacion" class="form-label" th:text="#{msg.estanteria.form.ubicacion}">Ubicacion:</label>
             <input type="text" th:field="*{ubicacion}" id="ubicacion" class="form-control" />
 
+            <!-- Muestra los errores de validación de la ubicación. -->
             <div th:if="${#fields.hasErrors('ubicacion')}"
                  class="text-danger"
                  th:errors="*{ubicacion}">
             </div>
         </div>
 
+        <!-- Campo para introducir el material de la estantería. -->
         <div class="mb-3">
             <label for="material" class="form-label" th:text="#{msg.estanteria.form.material}">Material:</label>
             <input type="text" th:field="*{material}" id="material" class="form-control" />
 
+            <!-- Muestra los errores de validación del material. -->
             <div th:if="${#fields.hasErrors('material')}"
                  class="text-danger"
                  th:errors="*{material}">
             </div>
         </div>
 
+        <!-- Campo para introducir el estado de la estantería. -->
         <div class="mb-3">
             <label for="estado" class="form-label" th:text="#{msg.estanteria.form.estado}">Estado:</label>
             <input type="text" th:field="*{estado}" id="estado" class="form-control" />
 
+            <!-- Muestra los errores de validación del estado. -->
             <div th:if="${#fields.hasErrors('estado')}"
                  class="text-danger"
                  th:errors="*{estado}">
             </div>
         </div>
 
+        <!-- Botón para guardar la nueva estantería o actualizar la existente. -->
         <button type="submit"
                 class="btn btn-primary"
                 th:text="${estanteria.id == null} ? #{msg.estanteria.form.create} : #{msg.estanteria.form.update}">
@@ -68,16 +82,16 @@
 
     </form>
 
-    <!-- Volver a la lista de regiones -->
+    <!-- Enlace para volver a la lista de estanterías. -->
     <a th:href="@{/estanterias}"
        class="btn btn-secondary mt-3"
        th:text="#{msg.estanteria.form.back}">
-      Volver
+        Volver
     </a>
 
 </main>
 
-<!-- Incluir el fragmento del footer -->
+<!-- Footer de la aplicación. -->
 <footer th:replace="fragments/footer :: footer"></footer>
 
 </body>

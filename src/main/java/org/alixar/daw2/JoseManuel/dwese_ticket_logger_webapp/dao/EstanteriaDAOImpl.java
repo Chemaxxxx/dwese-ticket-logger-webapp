@@ -8,16 +8,31 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Implementación de la interfaz EstanteriaDAO para gestionar
+ * las operaciones de acceso a datos de las estanterías.
+ * Utiliza JdbcTemplate para realizar las consultas a la base de datos.
+ */
 @Repository
 public class EstanteriaDAOImpl implements EstanteriaDAO {
 
+    /** Objeto utilizado para ejecutar consultas SQL. */
     private final JdbcTemplate jdbcTemplate;
 
+    /**
+     * Constructor de la clase que recibe el JdbcTemplate.
+     *
+     * @param jdbcTemplate objeto utilizado para acceder a la base de datos.
+     */
     public EstanteriaDAOImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
+    /**
+     * Obtiene la lista de todas las estanterías de la base de datos.
+     *
+     * @return lista de estanterías.
+     */
     @Override
     public List<Estanteria> listEstanterias() {
         String consulta = "SELECT * FROM estanteria";
@@ -27,6 +42,11 @@ public class EstanteriaDAOImpl implements EstanteriaDAO {
         return estanterias;
     }
 
+    /**
+     * Inserta una nueva estantería en la base de datos.
+     *
+     * @param estanteria estantería que se desea insertar.
+     */
     @Override
     public void insertEstanteria(Estanteria estanteria) {
 
@@ -36,6 +56,11 @@ public class EstanteriaDAOImpl implements EstanteriaDAO {
                 estanteria.getUbicacion(), estanteria.getMaterial(),estanteria.getEstado());
     }
 
+    /**
+     * Actualiza los datos de una estantería existente.
+     *
+     * @param estanteria estantería con los datos actualizados.
+     */
     @Override
     public void updateEstanteria(Estanteria estanteria) {
 
@@ -45,6 +70,11 @@ public class EstanteriaDAOImpl implements EstanteriaDAO {
                 estanteria.getUbicacion(), estanteria.getMaterial(), estanteria.getEstado(), estanteria.getId());
     }
 
+    /**
+     * Elimina una estantería de la base de datos mediante su identificador.
+     *
+     * @param id identificador de la estantería que se desea eliminar.
+     */
     @Override
     public void deleteEstanteria(Long id) {
 
@@ -52,6 +82,12 @@ public class EstanteriaDAOImpl implements EstanteriaDAO {
         jdbcTemplate.update(consulta, id);
     }
 
+    /**
+     * Busca una estantería en la base de datos mediante su identificador.
+     *
+     * @param id identificador de la estantería.
+     * @return estantería encontrada o null si no existe o se produce un error.
+     */
     @Override
     public Estanteria getById(Long id) {
 
@@ -65,6 +101,13 @@ public class EstanteriaDAOImpl implements EstanteriaDAO {
         }
     }
 
+    /**
+     * Comprueba si existe una estantería con el código indicado.
+     * La comparación no distingue entre mayúsculas y minúsculas.
+     *
+     * @param codigo código de la estantería que se desea comprobar.
+     * @return true si existe una estantería con ese código, false en caso contrario.
+     */
     @Override
     public boolean existsByCode(String codigo) {
 
@@ -76,6 +119,15 @@ public class EstanteriaDAOImpl implements EstanteriaDAO {
         return exists;
     }
 
+    /**
+     * Comprueba si existe otra estantería con el mismo código,
+     * excluyendo la estantería cuyo identificador se indica.
+     * La comparación no distingue entre mayúsculas y minúsculas.
+     *
+     * @param codigo código de la estantería que se desea comprobar.
+     * @param id identificador de la estantería que se desea excluir.
+     * @return true si existe otra estantería con ese código, false en caso contrario.
+     */
     @Override
     public boolean existsByCodeAndNotId(String codigo, Long id) {
 

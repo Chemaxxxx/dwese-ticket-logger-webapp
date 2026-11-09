@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
+<!-- Cabecera de la página con el título traducido -->
 <head th:replace="fragments/head :: head (#{msg.caja.list.title})"></head>
 <body>
 
+<!-- Barra de navegación del almacén -->
 <header th:replace="fragments/header-almacen :: header-almacen"></header>
+
+<!-- Contenido principal de la página -->
 <main class="container mt-5">
 
+    <!-- Título del listado de cajas -->
     <h1 th:text="#{msg.caja.list.heading}">Cajas</h1>
 
+    <!-- Muestra un mensaje de error si existe -->
     <div th:if="${errorMessage}" class="alert alert-danger">
         <p th:text="${errorMessage}"></p>
     </div>
 
+    <!-- Tabla que muestra los datos de las cajas -->
     <table class="table table-bordered mt-3">
 
+        <!-- Cabecera de la tabla con los nombres de las columnas -->
         <thead>
         <tr>
             <th th:text="#{msg.caja.table.id}">ID</th>
@@ -27,27 +35,42 @@
             <th th:text="#{msg.caja.table.acciones}">Acciones</th>
         </tr>
         </thead>
+
+        <!-- Cuerpo de la tabla con los datos de las cajas -->
         <tbody>
+
+        <!-- Recorre la lista de cajas y muestra sus datos en cada fila -->
         <tr th:each="caja : ${cajaList}">
             <td th:text="${caja.id}"></td>
             <td th:text="${caja.codigo}"></td>
             <td th:text="${caja.fecha_empaque}"></td>
+
+            <!-- Muestra Sí o No dependiendo de si la caja es frágil -->
             <td th:text="${caja.es_fragil} ? 'Sí' : 'No'"></td>
+
             <td th:text="${caja.peso_kg}"></td>
             <td th:text="${caja.contenido}"></td>
+
+            <!-- Recorre las estanterías y muestra el código de la que pertenece a la caja -->
             <td th:each="estanteria : ${estanteriaList}"
                 th:if="${caja.id_estanteria == estanteria.id}"
                 th:text="${estanteria.codigo}">
             </td>
+
+            <!-- Botones para editar o eliminar la caja -->
             <td>
+                <!-- Enlace al formulario de edición de la caja -->
                 <a th:href="@{/cajas/edit(id=${caja.id})}"
                    class="btn btn-primary btn-sm"
                    th:text="#{msg.caja.button.edit}">
                     Editar
                 </a>
 
+                <!-- Formulario para eliminar la caja mediante su identificador -->
                 <form th:action="@{/cajas/delete}" method="post" class="d-inline">
                     <input type="hidden" name="id" th:value="${caja.id}" />
+
+                    <!-- Botón que solicita confirmación antes de eliminar la caja -->
                     <button type="submit"
                             class="btn btn-danger btn-sm"
                             th:onclick="|return confirm('#{msg.caja.delete.confirm}');|"
@@ -60,13 +83,14 @@
         </tbody>
     </table>
 
+    <!-- Enlace para acceder al formulario de creación de una nueva caja -->
     <a th:href="@{/cajas/new}"
        class="btn btn-success mt-3"
        th:text="#{msg.caja.button.add}">
         Añadir nueva caja
     </a>
 
-    <!-- Volver al inicio -->
+    <!-- Enlace para volver a la página principal del almacén -->
     <a th:href="@{/almacen}"
        class="btn btn-secondary mt-3"
        th:text="#{msg.caja.button.back}">

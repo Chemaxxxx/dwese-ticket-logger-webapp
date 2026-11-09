@@ -1,10 +1,11 @@
-
-<!-- header.html -->
+<!-- Fragmento header-almacen.html -->
 <header th:fragment="header-almacen" xmlns:th="http://www.w3.org/1999/xhtml">
-    <!-- Fixed navbar -->
+
+    <!-- Barra de navegación fija en la parte superior de la página. -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
 
+            <!-- Nombre de la aplicación y enlace a la página principal. -->
             <a class="navbar-brand" th:href="@{/almacen}">TL - José Manuel</a>
 
             <button class="navbar-toggler" type="button"
@@ -16,22 +17,27 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+            <!-- Contenedor de los elementos del menú de navegación. -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
 
+                <!-- Enlaces a las diferentes secciones de la aplicación. -->
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
 
+                    <!-- Enlace a la página principal del almacén. -->
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
                            th:href="@{/almacen}"
                            th:text="#{msg.nav.home}">Inicio</a>
                     </li>
 
+                    <!-- Enlace a la gestión de estanterías. -->
                     <li class="nav-item">
                         <a class="nav-link"
                            th:href="@{/estanterias}"
                            th:text="#{msg.nav.estanterias}">Estanterias</a>
                     </li>
 
+                    <!-- Enlace a la gestión de cajas. -->
                     <li class="nav-item">
                         <a class="nav-link"
                            th:href="@{/cajas}"
@@ -40,15 +46,18 @@
 
                 </ul>
 
+                <!-- Formulario para cambiar el idioma de la aplicación. -->
                 <form th:action="@{/estanterias}" method="get" class="d-flex">
                     <select name="lang" onchange="this.form.submit()"
                             class="form-select">
 
+                        <!-- Opción para seleccionar el idioma español. -->
                         <option value="es"
                                 th:selected="${#locale.language == 'es'}">
                             Español
                         </option>
 
+                        <!-- Opción para seleccionar el idioma inglés. -->
                         <option value="en"
                                 th:selected="${#locale.language == 'en'}">
                             English
