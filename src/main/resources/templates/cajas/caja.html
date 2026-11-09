@@ -37,7 +37,7 @@
             <td th:text="${caja.contenido}"></td>
             <td th:each="estanteria : ${estanteriaList}"
                 th:if="${caja.id_estanteria == estanteria.id}"
-                th:text="${estanteria.ubicacion}">
+                th:text="${estanteria.codigo}">
             </td>
             <td>
                 <a th:href="@{/cajas/edit(id=${caja.id})}"
