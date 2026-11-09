@@ -21,7 +21,7 @@ INSERT IGNORE INTO regions (id, code, name) VALUES
 (18, '18', 'CEUTA Y MELILLA');
 
 
--- Insertar datos de las provincias españolas con los códigos correctos
+
 INSERT IGNORE INTO provinces (code, name, id_region) VALUES
 ('01', 'Araba/Álava', 16),
 ('02', 'Albacete', 8),
