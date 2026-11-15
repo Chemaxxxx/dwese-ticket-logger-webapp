@@ -1,4 +1,3 @@
-
 package org.alixar.daw2.JoseManuel.dwese_ticket_logger_webapp.controllers;
 
 import jakarta.validation.Valid;
@@ -161,6 +160,13 @@ public class RegionController {
 
                 if (fileName != null) {
                     region.setImage(fileName);
+                } else {
+                    // Archivo no válido o error al guardarlo: avisar al usuario
+                    redirectAttributes.addFlashAttribute("errorMessage",
+                            messageSource.getMessage(
+                                    "msg.region-form.image.invalid", null, locale));
+
+                    return "redirect:/regions/new";
                 }
             }
 
@@ -219,7 +225,7 @@ public class RegionController {
                 return "redirect:/regions/edit?id=" + region.getId();
             }
 
-            // Obtener la región actual para conservar su imagen
+            // Obtener la región actual para conocer su imagen
             Region existingRegion = regionDAO.getRegionById(region.getId());
 
             if (existingRegion == null) {
@@ -227,26 +233,37 @@ public class RegionController {
                 return "redirect:/regions";
             }
 
-            // Conservar la imagen anterior
-            region.setImage(existingRegion.getImage());
+            // Guardar el nombre de la imagen anterior EN UNA VARIABLE: tras el
+            // update, existingRegion puede reflejar ya la imagen nueva.
+            String oldImage = existingRegion.getImage();
+
+            // Por defecto se conserva la imagen anterior
+            region.setImage(oldImage);
 
             // Guardar la nueva imagen subida
+            boolean imageReplaced = false;
+
             if (!imageFile.isEmpty()) {
                 String fileName = fileStorageService.saveFile(imageFile);
 
                 if (fileName != null) {
                     region.setImage(fileName);
+                    imageReplaced = true;
+                } else {
+                    // Archivo no válido o error al guardarlo: avisar al usuario
+                    redirectAttributes.addFlashAttribute("errorMessage",
+                            messageSource.getMessage(
+                                    "msg.region-form.image.invalid", null, locale));
+
+                    return "redirect:/regions/edit?id=" + region.getId();
                 }
             }
 
             regionDAO.updateRegion(region);
 
-            // Eliminar la imagen anterior si se ha sustituido
-            if (!imageFile.isEmpty()
-                    && region.getImage() != null
-                    && existingRegion.getImage() != null) {
-
-                fileStorageService.deleteFile(existingRegion.getImage());
+            // Eliminar la imagen anterior solo si se ha sustituido por otra
+            if (imageReplaced && oldImage != null && !oldImage.isEmpty()) {
+                fileStorageService.deleteFile(oldImage);
             }
 
             logger.info("Región con ID {} actualizada con éxito.", region.getId());
@@ -280,17 +297,17 @@ public class RegionController {
         logger.info("Eliminando región con ID {}", id);
 
         try {
-            // Obtener la región antes de eliminarla
+            // Obtener la región antes de eliminarla para conocer su imagen
             Region region = regionDAO.getRegionById(id);
+
+            // Guardar el nombre de la imagen antes de borrar la región
+            String image = (region != null) ? region.getImage() : null;
 
             regionDAO.deleteRegion(id);
 
             // Eliminar la imagen asociada, si existe
-            if (region != null
-                    && region.getImage() != null
-                    && !region.getImage().isEmpty()) {
-
-                fileStorageService.deleteFile(region.getImage());
+            if (image != null && !image.isEmpty()) {
+                fileStorageService.deleteFile(image);
             }
 
             logger.info("Región con ID {} eliminada con éxito.", id);

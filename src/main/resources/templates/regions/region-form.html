@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head (#{msg.region.form.title})"></head>
@@ -24,6 +23,9 @@
 
         <input type="hidden" th:field="*{id}" />
 
+        <!-- Conserva el nombre de la imagen actual al editar sin subir una nueva -->
+        <input type="hidden" th:field="*{image}" />
+
         <div class="mb-3">
             <label for="code" class="form-label" th:text="#{msg.region.form.code}">Code:</label>
             <input type="text" th:field="*{code}" id="code" class="form-control" />
@@ -42,6 +44,13 @@
                  class="text-danger"
                  th:errors="*{name}">
             </div>
+        </div>
+
+        <!-- Imagen actual (solo al editar si ya tiene una) -->
+        <div class="mb-3" th:if="${region.image != null}">
+            <img th:src="@{'/uploads/' + ${region.image}}"
+                 alt="Imagen actual de la región"
+                 style="width: 100px; height: 100px; object-fit: cover;" />
         </div>
 
         <!-- Campo para cargar la imagen -->

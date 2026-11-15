@@ -13,9 +13,10 @@ import java.util.List;
  * La clase `Region` representa una entidad que modela una región dentro de la
  * base de datos.
  *
- * Contiene tres campos: `id`, `code` y `name`, donde `id` es el identificador
- * único de la región, `code` es un código asociado a la región y `name` es el
- * nombre de la región.
+ * Contiene los campos `id`, `code`, `name` e `image`, donde `id` es el
+ * identificador único de la región, `code` es un código asociado a la región,
+ * `name` es el nombre de la región e `image` es el nombre del archivo de
+ * imagen asociado (almacenado en la carpeta definida por UPLOAD_PATH).
  *
  * Las anotaciones de Lombok ayudan a reducir el código repetitivo al generar
  * automáticamente métodos comunes como getters, setters, constructores y
@@ -48,8 +49,10 @@ public class Region {
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
+    // Nombre del archivo de imagen de la región (ej: "andalucia.png").
+    // Es opcional, por eso admite null.
+    @Column(name = "image", length = 255)
     private String image;
-
 
     // Relación uno a muchos con la entidad Province.
     // Una región puede tener muchas provincias.
