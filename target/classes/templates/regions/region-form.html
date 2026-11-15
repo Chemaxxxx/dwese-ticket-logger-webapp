@@ -17,7 +17,10 @@
     </div>
 
     <form th:action="${region.id == null} ? @{/regions/insert} : @{/regions/update}"
-          th:object="${region}" method="post" class="mt-4">
+          th:object="${region}"
+          method="post"
+          enctype="multipart/form-data"
+          class="mt-4">
 
         <input type="hidden" th:field="*{id}" />
 
@@ -39,6 +42,16 @@
                  class="text-danger"
                  th:errors="*{name}">
             </div>
+        </div>
+
+        <!-- Campo para cargar la imagen -->
+        <div class="mb-3">
+            <label for="imageFile" class="form-label">Imagen:</label>
+            <input type="file"
+                   id="imageFile"
+                   name="imageFile"
+                   class="form-control"
+                   accept="image/*" />
         </div>
 
         <button type="submit"

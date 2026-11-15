@@ -5,21 +5,11 @@ code VARCHAR(10) NOT NULL UNIQUE,
 name VARCHAR(100) NOT NULL
     );
 
-CREATE TABLE IF NOT EXISTS estanteria (
+-- Crear tabla para las provincias españolas
+CREATE TABLE IF NOT EXISTS provinces (
 id INT AUTO_INCREMENT PRIMARY KEY,
-codigo VARCHAR(20) NOT NULL UNIQUE,
-ubicacion VARCHAR(100) NOT NULL,
-material VARCHAR(50) NOT NULL,
-estado VARCHAR(30) NOT NULL
-    );
-
-CREATE TABLE IF NOT EXISTS caja (
-id INT AUTO_INCREMENT PRIMARY KEY,
-codigo VARCHAR(20) NOT NULL UNIQUE,
-fecha_empaque DATE NOT NULL,
-es_fragil BOOLEAN NOT NULL,
-peso_kg DECIMAL(10,2) NOT NULL,
-contenido VARCHAR(100) NOT NULL,
-id_estanteria INT NOT NULL,
-FOREIGN KEY (id_estanteria) REFERENCES estanteria(id)
+code VARCHAR(10) NOT NULL UNIQUE,
+name VARCHAR(100) NOT NULL,
+id_region INT NOT NULL,
+FOREIGN KEY (id_region) REFERENCES regions(id)
     );

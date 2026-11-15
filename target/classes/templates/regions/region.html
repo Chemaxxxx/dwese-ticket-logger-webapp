@@ -25,6 +25,7 @@
             <th th:text="#{msg.region.table.id}">ID</th>
             <th th:text="#{msg.region.table.code}">Code</th>
             <th th:text="#{msg.region.table.name}">Name</th>
+            <th>Imagen de la región</th>
             <th th:text="#{msg.region.table.actions}">Actions</th>
         </tr>
         </thead>
@@ -34,6 +35,14 @@
             <td th:text="${region.id}"></td>
             <td th:text="${region.code}"></td>
             <td th:text="${region.name}"></td>
+
+            <!-- Imagen de la región -->
+            <td>
+                <img th:src="@{'/uploads/' + ${region.image}}"
+                     alt="Imagen de la región"
+                     width="100">
+            </td>
+
             <td>
                 <!-- Editar región -->
                 <a th:href="@{/regions/edit(id=${region.id})}"

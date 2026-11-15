@@ -48,6 +48,8 @@ public class Region {
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
+    private String image;
+
 
     // Relación uno a muchos con la entidad Province.
     // Una región puede tener muchas provincias.

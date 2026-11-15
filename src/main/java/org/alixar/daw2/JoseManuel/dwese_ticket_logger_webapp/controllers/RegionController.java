@@ -4,6 +4,7 @@ package org.alixar.daw2.JoseManuel.dwese_ticket_logger_webapp.controllers;
 import jakarta.validation.Valid;
 import org.alixar.daw2.JoseManuel.dwese_ticket_logger_webapp.dao.RegionDAO;
 import org.alixar.daw2.JoseManuel.dwese_ticket_logger_webapp.entities.Region;
+import org.alixar.daw2.JoseManuel.dwese_ticket_logger_webapp.services.FileStorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -26,7 +28,8 @@ import java.util.Locale;
 @RequestMapping("/regions")
 public class RegionController {
 
-    private static final Logger logger = LoggerFactory.getLogger(RegionController.class);
+    private static final Logger logger =
+            LoggerFactory.getLogger(RegionController.class);
 
     // DAO para gestionar las operaciones de las regiones
     @Autowired
@@ -34,6 +37,10 @@ public class RegionController {
 
     @Autowired
     private MessageSource messageSource;
+
+    // Servicio para gestionar las imágenes
+    @Autowired
+    private FileStorageService fileStorageService;
 
     /**
      * Lista todas las regiones y las pasa como atributo al modelo.
@@ -88,7 +95,8 @@ public class RegionController {
      * @return Plantilla Thymeleaf del formulario.
      */
     @GetMapping("/edit")
-    public String showEditForm(@RequestParam("id") Long id, Model model, Locale locale) {
+    public String showEditForm(@RequestParam("id") Long id,
+                               Model model, Locale locale) {
         logger.info("Mostrando formulario de edición para la región con ID {}", id);
 
         Region region = null;
@@ -117,6 +125,7 @@ public class RegionController {
      *
      * @param region Objeto que contiene los datos del formulario.
      * @param result Resultado de las validaciones.
+     * @param imageFile Imagen subida desde el formulario.
      * @param redirectAttributes Atributos para mensajes flash.
      * @param locale Idioma actual.
      * @return Redirección a la lista de regiones o al formulario.
@@ -124,6 +133,7 @@ public class RegionController {
     @PostMapping("/insert")
     public String insertRegion(@Valid @ModelAttribute("region") Region region,
                                BindingResult result,
+                               @RequestParam("imageFile") MultipartFile imageFile,
                                RedirectAttributes redirectAttributes,
                                Locale locale) {
 
@@ -143,6 +153,15 @@ public class RegionController {
                 redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
 
                 return "redirect:/regions/new";
+            }
+
+            // Guardar la imagen subida
+            if (!imageFile.isEmpty()) {
+                String fileName = fileStorageService.saveFile(imageFile);
+
+                if (fileName != null) {
+                    region.setImage(fileName);
+                }
             }
 
             regionDAO.insertRegion(region);
@@ -167,6 +186,7 @@ public class RegionController {
      *
      * @param region Objeto que contiene los datos del formulario.
      * @param result Resultado de las validaciones.
+     * @param imageFile Imagen subida desde el formulario.
      * @param redirectAttributes Atributos para mensajes flash.
      * @param locale Idioma actual.
      * @return Redirección a la lista de regiones o al formulario.
@@ -174,6 +194,7 @@ public class RegionController {
     @PostMapping("/update")
     public String updateRegion(@Valid @ModelAttribute("region") Region region,
                                BindingResult result,
+                               @RequestParam("imageFile") MultipartFile imageFile,
                                RedirectAttributes redirectAttributes,
                                Locale locale) {
 
@@ -198,7 +219,35 @@ public class RegionController {
                 return "redirect:/regions/edit?id=" + region.getId();
             }
 
+            // Obtener la región actual para conservar su imagen
+            Region existingRegion = regionDAO.getRegionById(region.getId());
+
+            if (existingRegion == null) {
+                logger.warn("No se encontró la región con ID {}", region.getId());
+                return "redirect:/regions";
+            }
+
+            // Conservar la imagen anterior
+            region.setImage(existingRegion.getImage());
+
+            // Guardar la nueva imagen subida
+            if (!imageFile.isEmpty()) {
+                String fileName = fileStorageService.saveFile(imageFile);
+
+                if (fileName != null) {
+                    region.setImage(fileName);
+                }
+            }
+
             regionDAO.updateRegion(region);
+
+            // Eliminar la imagen anterior si se ha sustituido
+            if (!imageFile.isEmpty()
+                    && region.getImage() != null
+                    && existingRegion.getImage() != null) {
+
+                fileStorageService.deleteFile(existingRegion.getImage());
+            }
 
             logger.info("Región con ID {} actualizada con éxito.", region.getId());
 
@@ -231,7 +280,18 @@ public class RegionController {
         logger.info("Eliminando región con ID {}", id);
 
         try {
+            // Obtener la región antes de eliminarla
+            Region region = regionDAO.getRegionById(id);
+
             regionDAO.deleteRegion(id);
+
+            // Eliminar la imagen asociada, si existe
+            if (region != null
+                    && region.getImage() != null
+                    && !region.getImage().isEmpty()) {
+
+                fileStorageService.deleteFile(region.getImage());
+            }
 
             logger.info("Región con ID {} eliminada con éxito.", id);
 
