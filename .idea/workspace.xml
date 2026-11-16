@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90f93eef-bd1e-41b5-9b0f-a31c913100b4" name="Changes" comment="" />
+    <list default="true" id="90f93eef-bd1e-41b5-9b0f-a31c913100b4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,23 +42,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.004216139891463" />
-      <entry key="MS500" value="2.300599963905812" />
-      <entry key="S2" value="7.889118333653135" />
-      <entry key="S5" value="14.415516322920082" />
-      <entry key="S10" value="21.526331971851473" />
-      <entry key="S30" value="40.46146202059504" />
-      <entry key="S60" value="55.04040888924488" />
-      <entry key="M2" value="71.92566044015506" />
-      <entry key="M5" value="98.79095678565346" />
-      <entry key="M10" value="122.86874695427642" />
-      <entry key="M15" value="136.30511834425664" />
-      <entry key="M30" value="154.58925367140316" />
-      <entry key="H1" value="166.22215952005098" />
-      <entry key="H2" value="172.81598051834672" />
-      <entry key="H4" value="176.33053147835577" />
-      <entry key="D1" value="179.37733538412564" />
-      <entry key="W1" value="179.9107720134173" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0000000000000069" />
+      <entry key="S10" value="1.0000003352356555" />
+      <entry key="S30" value="1.0624023883468448" />
+      <entry key="S60" value="2.678278279324249" />
+      <entry key="M2" value="11.27120901047635" />
+      <entry key="M5" value="45.53649267930846" />
+      <entry key="M10" value="91.42077130068266" />
+      <entry key="M15" value="121.14613557989877" />
+      <entry key="M30" value="165.8847944273129" />
+      <entry key="H1" value="196.85204968588116" />
+      <entry key="H2" value="215.25561615222065" />
+      <entry key="H4" value="225.31412331495977" />
+      <entry key="D1" value="234.1735265169139" />
+      <entry key="W1" value="235.73793496803063" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -77,23 +80,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.072477073307925" />
-      <entry key="MS500" value="1.8343647402845338" />
-      <entry key="S2" value="7.604865594393467" />
-      <entry key="S5" value="14.23919997585099" />
-      <entry key="S10" value="21.413871549319623" />
-      <entry key="S30" value="40.405447588307844" />
-      <entry key="S60" value="55.00576222569749" />
-      <entry key="M2" value="71.90553337763556" />
-      <entry key="M5" value="98.78174638208672" />
-      <entry key="M10" value="122.86375794192425" />
-      <entry key="M15" value="136.30166172742722" />
-      <entry key="M30" value="154.5874395380193" />
-      <entry key="H1" value="166.2212256852964" />
-      <entry key="H2" value="172.81550607535644" />
-      <entry key="H4" value="176.33029225841014" />
-      <entry key="D1" value="179.37729522597604" />
-      <entry key="W1" value="179.91076626933918" />
+      <entry key="MS100" value="0.005336094752946856" />
+      <entry key="MS500" value="0.3511112189344993" />
+      <entry key="S2" value="0.7697703459284406" />
+      <entry key="S5" value="0.900625979847936" />
+      <entry key="S10" value="0.9490134961395053" />
+      <entry key="S30" value="1.0451002294238363" />
+      <entry key="S60" value="2.6694630904757273" />
+      <entry key="M2" value="11.266231004446022" />
+      <entry key="M5" value="45.53268412280824" />
+      <entry key="M10" value="91.41748925874269" />
+      <entry key="M15" value="121.14338134918391" />
+      <entry key="M30" value="165.8830154172834" />
+      <entry key="H1" value="196.8510282627646" />
+      <entry key="H2" value="215.2550674030377" />
+      <entry key="H4" value="225.3138387090103" />
+      <entry key="D1" value="234.17347759553306" />
+      <entry key="W1" value="235.737927941949" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -118,7 +121,7 @@
     "Spring Boot.DweseTicketLoggerWebappApplication.executor": "Run",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "jpa-hibernate",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/josem/IdeaProjects/dwese-ticket-logger-webapp",
@@ -128,7 +131,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
     "to.speed.mode.migration.done": "true"
   }
