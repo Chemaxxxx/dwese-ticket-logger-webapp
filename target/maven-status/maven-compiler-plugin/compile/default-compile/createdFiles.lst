@@ -1,0 +1,15 @@
+org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\controllers\ProvinceController.class
+org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\config\LocaleConfig.class
+org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\dao\ProvinceDAOImpl.class
+org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\controllers\HomeController.class
+org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\demo\HelloController.class
+org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\DweseTicketLoggerWebappApplication.class
+org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\config\WebConfig.class
+org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\dao\ProvinceDAO.class
+org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\entities\Province.class
+org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\dao\RegionDAOImpl.class
+org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\services\FileStorageService.class
+org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\controllers\RegionController.class
+org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\config\DotenvConfig.class
+org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\entities\Region.class
+org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\dao\RegionDAO.class

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="90f93eef-bd1e-41b5-9b0f-a31c913100b4" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="jdbc" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Chemaxxxx&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Chemaxxxx/dwese-ticket-logger-webapp.git&quot;,
+    &quot;accountId&quot;: &quot;7ba460f9-d186-41d5-bf10-9dc62d73ba24&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.004216139891463" />
+      <entry key="MS500" value="2.300599963905812" />
+      <entry key="S2" value="7.889118333653135" />
+      <entry key="S5" value="14.415516322920082" />
+      <entry key="S10" value="21.526331971851473" />
+      <entry key="S30" value="40.46146202059504" />
+      <entry key="S60" value="55.04040888924488" />
+      <entry key="M2" value="71.92566044015506" />
+      <entry key="M5" value="98.79095678565346" />
+      <entry key="M10" value="122.86874695427642" />
+      <entry key="M15" value="136.30511834425664" />
+      <entry key="M30" value="154.58925367140316" />
+      <entry key="H1" value="166.22215952005098" />
+      <entry key="H2" value="172.81598051834672" />
+      <entry key="H4" value="176.33053147835577" />
+      <entry key="D1" value="179.37733538412564" />
+      <entry key="W1" value="179.9107720134173" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.072477073307925" />
+      <entry key="MS500" value="1.8343647402845338" />
+      <entry key="S2" value="7.604865594393467" />
+      <entry key="S5" value="14.23919997585099" />
+      <entry key="S10" value="21.413871549319623" />
+      <entry key="S30" value="40.405447588307844" />
+      <entry key="S60" value="55.00576222569749" />
+      <entry key="M2" value="71.90553337763556" />
+      <entry key="M5" value="98.78174638208672" />
+      <entry key="M10" value="122.86375794192425" />
+      <entry key="M15" value="136.30166172742722" />
+      <entry key="M30" value="154.5874395380193" />
+      <entry key="H1" value="166.2212256852964" />
+      <entry key="H2" value="172.81550607535644" />
+      <entry key="H4" value="176.33029225841014" />
+      <entry key="D1" value="179.37729522597604" />
+      <entry key="W1" value="179.91076626933918" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3M8U5VKBfBGk5uugmdUozDp6NQL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.DweseTicketLoggerWebappApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/josem/IdeaProjects/dwese-ticket-logger-webapp",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "to.speed.mode.migration.done": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="DweseTicketLoggerWebappApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="dwese-ticket-logger-webapp" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.alixar.daw2.JoseManuel.dwese_ticket_logger_webapp.DweseTicketLoggerWebappApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="90f93eef-bd1e-41b5-9b0f-a31c913100b4" name="Changes" comment="" />
+      <created>1794731506669</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1794731506669</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

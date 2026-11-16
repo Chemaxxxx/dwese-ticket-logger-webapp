@@ -1,0 +1,15 @@
+C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp\src\main\java\org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\config\DotenvConfig.java
+C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp\src\main\java\org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\config\LocaleConfig.java
+C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp\src\main\java\org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\config\WebConfig.java
+C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp\src\main\java\org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\controllers\HomeController.java
+C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp\src\main\java\org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\controllers\ProvinceController.java
+C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp\src\main\java\org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\controllers\RegionController.java
+C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp\src\main\java\org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\dao\ProvinceDAO.java
+C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp\src\main\java\org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\dao\ProvinceDAOImpl.java
+C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp\src\main\java\org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\dao\RegionDAO.java
+C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp\src\main\java\org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\dao\RegionDAOImpl.java
+C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp\src\main\java\org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\demo\HelloController.java
+C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp\src\main\java\org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\DweseTicketLoggerWebappApplication.java
+C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp\src\main\java\org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\entities\Province.java
+C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp\src\main\java\org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\entities\Region.java
+C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp\src\main\java\org\alixar\daw2\JoseManuel\dwese_ticket_logger_webapp\services\FileStorageService.java
