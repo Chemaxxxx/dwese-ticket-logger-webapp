@@ -41,8 +41,7 @@ public class ProvinceController {
     private final MessageSource messageSource;
 
     // Inyección por constructor.
-    public ProvinceController(ProvinceRepository provinceRepository,
-                              RegionRepository regionRepository,
+    public ProvinceController(ProvinceRepository provinceRepository, RegionRepository regionRepository,
                               MessageSource messageSource) {
         this.provinceRepository = provinceRepository;
         this.regionRepository = regionRepository;
