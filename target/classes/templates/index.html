@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head (#{msg.home.title})"></head>
+
+<body class="d-flex flex-column h-100">
+
+<!-- Header -->
+<header th:replace="fragments/header :: header"></header>
+
+<!-- Contenido principal -->
+<main class="flex-shrink-0">
+  <div class="container">
+    <h1 class="mt-5" th:text="#{msg.home.heading}">Ticket Logger</h1>
+
+    <p class="lead" th:text="#{msg.home.description}">
+      José Manuel - Aplicación Web para el registro de tickets en compras de supermercado
+    </p>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer th:replace="fragments/footer :: footer"></footer>
+
+</body>
+</html>

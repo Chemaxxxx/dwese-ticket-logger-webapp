@@ -4,11 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90f93eef-bd1e-41b5-9b0f-a31c913100b4" name="Changes" comment="" />
+    <list default="true" id="90f93eef-bd1e-41b5-9b0f-a31c913100b4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alixar/daw2/JoseManuel/dwese_ticket_logger_webapp/repositories/ProvinceRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alixar/daw2/JoseManuel/dwese_ticket_logger_webapp/repositories/RegionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alixar/daw2/JoseManuel/dwese_ticket_logger_webapp/controllers/ProvinceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/alixar/daw2/JoseManuel/dwese_ticket_logger_webapp/controllers/ProvinceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alixar/daw2/JoseManuel/dwese_ticket_logger_webapp/controllers/RegionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/alixar/daw2/JoseManuel/dwese_ticket_logger_webapp/controllers/RegionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alixar/daw2/JoseManuel/dwese_ticket_logger_webapp/dao/ProvinceDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alixar/daw2/JoseManuel/dwese_ticket_logger_webapp/dao/ProvinceDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alixar/daw2/JoseManuel/dwese_ticket_logger_webapp/dao/RegionDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alixar/daw2/JoseManuel/dwese_ticket_logger_webapp/dao/RegionDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_es.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_es.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -39,23 +61,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.004216139891463" />
-      <entry key="MS500" value="2.300599963905812" />
-      <entry key="S2" value="7.889118333653135" />
-      <entry key="S5" value="14.415516322920082" />
-      <entry key="S10" value="21.526331971851473" />
-      <entry key="S30" value="40.46146202059504" />
-      <entry key="S60" value="55.04040888924488" />
-      <entry key="M2" value="71.92566044015506" />
-      <entry key="M5" value="98.79095678565346" />
-      <entry key="M10" value="122.86874695427642" />
-      <entry key="M15" value="136.30511834425664" />
-      <entry key="M30" value="154.58925367140316" />
-      <entry key="H1" value="166.22215952005098" />
-      <entry key="H2" value="172.81598051834672" />
-      <entry key="H4" value="176.33053147835577" />
-      <entry key="D1" value="179.37733538412564" />
-      <entry key="W1" value="179.9107720134173" />
+      <entry key="MS100" value="1.0000000000003446" />
+      <entry key="MS500" value="1.003316285768251" />
+      <entry key="S2" value="1.3773180484148235" />
+      <entry key="S5" value="2.259478602158854" />
+      <entry key="S10" value="3.1224483689287896" />
+      <entry key="S30" value="4.526404904978783" />
+      <entry key="S60" value="5.179141625741309" />
+      <entry key="M2" value="6.937466840606843" />
+      <entry key="M5" value="36.58798265994959" />
+      <entry key="M10" value="103.40007448882643" />
+      <entry key="M15" value="152.84133491505838" />
+      <entry key="M30" value="231.5685901799151" />
+      <entry key="H1" value="288.0152815266535" />
+      <entry key="H2" value="322.12461737532357" />
+      <entry key="H4" value="340.9210832163859" />
+      <entry key="D1" value="357.56027507454456" />
+      <entry key="W1" value="360.50627050780554" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -77,23 +99,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.072477073307925" />
-      <entry key="MS500" value="1.8343647402845338" />
-      <entry key="S2" value="7.604865594393467" />
-      <entry key="S5" value="14.23919997585099" />
-      <entry key="S10" value="21.413871549319623" />
-      <entry key="S30" value="40.405447588307844" />
-      <entry key="S60" value="55.00576222569749" />
-      <entry key="M2" value="71.90553337763556" />
-      <entry key="M5" value="98.78174638208672" />
-      <entry key="M10" value="122.86375794192425" />
-      <entry key="M15" value="136.30166172742722" />
-      <entry key="M30" value="154.5874395380193" />
-      <entry key="H1" value="166.2212256852964" />
-      <entry key="H2" value="172.81550607535644" />
-      <entry key="H4" value="176.33029225841014" />
-      <entry key="D1" value="179.37729522597604" />
-      <entry key="W1" value="179.91076626933918" />
+      <entry key="MS100" value="4.134498595538038E-4" />
+      <entry key="MS500" value="0.21167282714994337" />
+      <entry key="S2" value="0.9659216077179215" />
+      <entry key="S5" value="1.9860692999288874" />
+      <entry key="S10" value="2.939176180507812" />
+      <entry key="S30" value="4.444361011354608" />
+      <entry key="S60" value="5.133881151983269" />
+      <entry key="M2" value="6.913349646674981" />
+      <entry key="M5" value="36.5758563815632" />
+      <entry key="M10" value="103.39149071890868" />
+      <entry key="M15" value="152.83442494710707" />
+      <entry key="M30" value="231.5642309374291" />
+      <entry key="H1" value="288.01279091835687" />
+      <entry key="H2" value="322.1232804111155" />
+      <entry key="H4" value="340.92038981713876" />
+      <entry key="D1" value="357.5601558633891" />
+      <entry key="W1" value="360.5062533858852" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -105,34 +127,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.DweseTicketLoggerWebappApplication.executor": "Run",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/josem/IdeaProjects/dwese-ticket-logger-webapp",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.DweseTicketLoggerWebappApplication.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/josem/IdeaProjects/dwese-ticket-logger-webapp&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\josem\IdeaProjects\dwese-ticket-logger-webapp" />
