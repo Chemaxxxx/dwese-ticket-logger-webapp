@@ -3,6 +3,7 @@ package org.alixar.daw2.JoseManuel.dwese_ticket_logger_webapp.controllers;
 import jakarta.validation.Valid;
 import org.alixar.daw2.JoseManuel.dwese_ticket_logger_webapp.entities.Region;
 import org.alixar.daw2.JoseManuel.dwese_ticket_logger_webapp.repositories.RegionRepository;
+import org.alixar.daw2.JoseManuel.dwese_ticket_logger_webapp.services.FileStorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -38,12 +40,12 @@ public class RegionController {
     @Autowired
     private MessageSource messageSource;
 
+    // Servicio para gestionar las imágenes
+    @Autowired
+    private FileStorageService fileStorageService;
+
     /**
      * Lista todas las regiones y las pasa como atributo al modelo.
-     *
-     * @param model Modelo para pasar datos a la vista.
-     * @param locale Idioma actual.
-     * @return Plantilla Thymeleaf para mostrar la lista de regiones.
      */
     @GetMapping
     public String listRegions(Model model, Locale locale) {
@@ -69,9 +71,6 @@ public class RegionController {
 
     /**
      * Muestra el formulario para crear una nueva región.
-     *
-     * @param model Modelo para pasar datos a la vista.
-     * @return Plantilla Thymeleaf del formulario.
      */
     @GetMapping("/new")
     public String showNewForm(Model model) {
@@ -84,12 +83,6 @@ public class RegionController {
 
     /**
      * Muestra el formulario para editar una región existente.
-     *
-     * @param id ID de la región a editar.
-     * @param model Modelo para pasar datos a la vista.
-     * @param redirectAttributes Atributos para mensajes flash.
-     * @param locale Idioma actual.
-     * @return Plantilla Thymeleaf del formulario.
      */
     @GetMapping("/edit")
     public String showEditForm(@RequestParam("id") Long id, Model model,
@@ -102,7 +95,6 @@ public class RegionController {
 
             if (region.isEmpty()) {
                 // Si no existe, se vuelve al listado con un aviso
-                // (la vista no puede trabajar con una región null)
                 logger.warn("No se encontró la región con ID {}", id);
 
                 redirectAttributes.addFlashAttribute("errorMessage",
@@ -129,16 +121,11 @@ public class RegionController {
 
     /**
      * Inserta una nueva región en la base de datos.
-     *
-     * @param region Objeto que contiene los datos del formulario.
-     * @param result Resultado de las validaciones.
-     * @param redirectAttributes Atributos para mensajes flash.
-     * @param locale Idioma actual.
-     * @return Redirección a la lista de regiones o al formulario.
      */
     @PostMapping("/insert")
     public String insertRegion(@Valid @ModelAttribute("region") Region region,
                                BindingResult result,
+                               @RequestParam("imageFile") MultipartFile imageFile,
                                RedirectAttributes redirectAttributes,
                                Locale locale) {
 
@@ -156,6 +143,21 @@ public class RegionController {
                 result.rejectValue("code", "msg.region-controller.insert.codeExist");
 
                 return "regions/region-form";
+            }
+
+            // Guardar la imagen subida
+            if (!imageFile.isEmpty()) {
+                String fileName = fileStorageService.saveFile(imageFile);
+
+                if (fileName != null) {
+                    region.setImage(fileName);
+                } else {
+                    redirectAttributes.addFlashAttribute("errorMessage",
+                            messageSource.getMessage(
+                                    "msg.region-form.image.invalid", null, locale));
+
+                    return "redirect:/regions/new";
+                }
             }
 
             regionRepository.save(region);
@@ -176,16 +178,11 @@ public class RegionController {
 
     /**
      * Actualiza una región existente en la base de datos.
-     *
-     * @param region Objeto que contiene los datos del formulario.
-     * @param result Resultado de las validaciones.
-     * @param redirectAttributes Atributos para mensajes flash.
-     * @param locale Idioma actual.
-     * @return Redirección a la lista de regiones o al formulario.
      */
     @PostMapping("/update")
     public String updateRegion(@Valid @ModelAttribute("region") Region region,
                                BindingResult result,
+                               @RequestParam("imageFile") MultipartFile imageFile,
                                RedirectAttributes redirectAttributes,
                                Locale locale) {
 
@@ -207,7 +204,49 @@ public class RegionController {
                 return "regions/region-form";
             }
 
+            // Obtener la región actual para conocer su imagen
+            Optional<Region> existingRegion = regionRepository.findById(region.getId());
+
+            if (existingRegion.isEmpty()) {
+                logger.warn("No se encontró la región con ID {}", region.getId());
+
+                redirectAttributes.addFlashAttribute("errorMessage",
+                        messageSource.getMessage(
+                                "msg.region-controller.edit.notFound", null, locale));
+
+                return "redirect:/regions";
+            }
+
+            // Guardar el nombre de la imagen anterior EN UNA VARIABLE: tras el
+            // save, la entidad existente puede reflejar ya la imagen nueva.
+            String oldImage = existingRegion.get().getImage();
+
+            // Por defecto se conserva la imagen anterior
+            region.setImage(oldImage);
+
+            boolean imageReplaced = false;
+
+            if (!imageFile.isEmpty()) {
+                String fileName = fileStorageService.saveFile(imageFile);
+
+                if (fileName != null) {
+                    region.setImage(fileName);
+                    imageReplaced = true;
+                } else {
+                    redirectAttributes.addFlashAttribute("errorMessage",
+                            messageSource.getMessage(
+                                    "msg.region-form.image.invalid", null, locale));
+
+                    return "redirect:/regions/edit?id=" + region.getId();
+                }
+            }
+
             regionRepository.save(region);
+
+            // Eliminar la imagen anterior solo si se ha sustituido por otra
+            if (imageReplaced && oldImage != null && !oldImage.isEmpty()) {
+                fileStorageService.deleteFile(oldImage);
+            }
 
             logger.info("Región con ID {} actualizada con éxito.", region.getId());
 
@@ -225,11 +264,6 @@ public class RegionController {
 
     /**
      * Elimina una región de la base de datos.
-     *
-     * @param id ID de la región a eliminar.
-     * @param redirectAttributes Atributos para mensajes flash.
-     * @param locale Idioma actual.
-     * @return Redirección a la lista de regiones.
      */
     @PostMapping("/delete")
     public String deleteRegion(@RequestParam("id") Long id,
@@ -242,7 +276,14 @@ public class RegionController {
             Optional<Region> regionOpt = regionRepository.findById(id);
 
             if (regionOpt.isPresent()) {
+                String image = regionOpt.get().getImage();
+
                 regionRepository.deleteById(id);
+
+                // Eliminar la imagen asociada, solo después de borrar la región
+                if (image != null && !image.isEmpty()) {
+                    fileStorageService.deleteFile(image);
+                }
 
                 logger.info("Región con ID {} eliminada con éxito.", id);
             } else {

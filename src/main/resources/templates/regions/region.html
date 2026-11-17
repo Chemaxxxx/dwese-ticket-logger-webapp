@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -25,6 +24,7 @@
             <th th:text="#{msg.region.table.id}">ID</th>
             <th th:text="#{msg.region.table.code}">Code</th>
             <th th:text="#{msg.region.table.name}">Name</th>
+            <th>Imagen de la región</th>
             <th th:text="#{msg.region.table.actions}">Actions</th>
         </tr>
         </thead>
@@ -34,6 +34,17 @@
             <td th:text="${region.id}"></td>
             <td th:text="${region.code}"></td>
             <td th:text="${region.name}"></td>
+
+            <!-- Mostrar la imagen si existe -->
+            <td>
+                <img th:if="${region.image != null}"
+                     th:src="@{'/uploads/' + ${region.image}}"
+                     alt="Imagen de la región"
+                     style="width: 100px; height: 100px; object-fit: cover;" />
+                <span th:if="${region.image == null}"
+                      th:text="#{msg.region.noImage}"></span>
+            </td>
+
             <td>
                 <!-- Editar región -->
                 <a th:href="@{/regions/edit(id=${region.id})}"
